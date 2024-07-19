@@ -1,7 +1,12 @@
 import React from 'react';
+import { Item } from '../../types';
 
-const Listing = ({ items = [] }) => {
-  const renderPrice = (currencyCode, price) => {
+interface ListingProps {
+  items: Item[];
+}
+
+const Listing: React.FC<ListingProps> = ({ items = [] }) => {
+  const renderPrice = (currencyCode: string, price: string) => {
     switch (currencyCode) {
       case 'USD':
         return `$${price}`;
@@ -12,13 +17,13 @@ const Listing = ({ items = [] }) => {
     }
   };
 
-  const renderQuantityClass = (quantity) => {
+  const renderQuantityClass = (quantity: number) => {
     if (quantity <= 10) {
-        return 'level-low';
+      return 'level-low';
     } else if (quantity <= 20) {
-        return 'level-medium';
+      return 'level-medium';
     } else {
-        return 'level-high';
+      return 'level-high';
     }
   };
 
